@@ -1,0 +1,4 @@
+run 'customer_dimension.ctl'
+run 'product_levels.ctl'
+run 'product_dimension.ctl'
+run 'sales_facts.ctl'

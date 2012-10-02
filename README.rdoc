@@ -1,0 +1,29 @@
+Cupcakesinc-etl
+
+This is project 2 of 3 for the Activewarehouse-etl / Mondrian-Olap Cupcakesinc example.
+
+Cupcakesinc-transactional: https://github.com/DaveTD/Cupcakesinc-transactional
+Cupcakesinc-mondrian: https://github.com/DaveTD/Cupcakesinc-mondrian
+
+This project is limited in what it does.  It performs the etl function using Activewarehouse-etl, converting the data from Cupcakesinc-transactional's database, to the format required by the Mondrian-Olap gem.
+
+Follow the database setup from the config folder, making sure that the appropriate databases have been created and are owned by the users listed.  Check the gemfile to make sure the correct libraries have been installed.
+
+After all the gems have been loaded, run the etl by running etl etl/process_all.ebf.
+
+The most important files here will be in the etl folder:
+
+customer_dimension.ctl
+	This file contains the etl information for uploading customer information.  Like all ctl files, the file is organized into an etract section, an optional transform section and a load section.
+
+process_all.ebf
+	This file is run by the etl tool, giving the order in which the ctl files will be run.
+
+product_dimension.ctl
+	This file contains the etl information for uploading product information.  Like all ctl files, the file is organized into an etract section, an optional transform section and a load section.
+
+product_levels.ctl
+	This file contains the etl information for the levels which are applied to the products.
+
+sales_facts.ctl
+	This is the fact table we will be reporting from.  All of the dimensions are referenced here, as well as two columns which will be used as measures: sales revenues and products sold.
